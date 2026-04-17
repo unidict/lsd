@@ -43,14 +43,13 @@
 		692F17702F8CFCB90037745D /* libogg.0.8.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.8.6.dylib; path = ../../../../opt/homebrew/Cellar/libogg/1.3.6/lib/libogg.0.8.6.dylib; sourceTree = "<group>"; };
 		692F17712F8CFCB90037745D /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = ../../../../opt/homebrew/Cellar/libvorbis/1.3.7/lib/libvorbis.0.dylib; sourceTree = "<group>"; };
 		692F17782F8DEC6E0037745D /* libunistring.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libunistring.5.dylib; path = ../../../../opt/homebrew/Cellar/libunistring/1.4.2/lib/libunistring.5.dylib; sourceTree = "<group>"; };
+		692F1D552F91DC900037745D /* dictzip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = dictzip.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		692F15642F8939B90037745D /* Exceptions for "src" folder in "lsd" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dsl_dictzip.c,
-				dsl_dictzip.h,
 				dsl_reader.c,
 				dsl_reader.h,
 				lsa_reader.c,
@@ -72,6 +71,13 @@
 			);
 			target = 692F15472F89398D0037745D /* lsd */;
 		};
+		692F1D692F91DCAF0037745D /* Exceptions for "deps" folder in "lsd" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				dictzip/tests/main.c,
+			);
+			target = 692F15472F89398D0037745D /* lsd */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -86,6 +92,14 @@
 		692F15F12F89F61E0037745D /* tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = tests;
+			sourceTree = "<group>";
+		};
+		692F1D582F91DC900037745D /* deps */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				692F1D692F91DCAF0037745D /* Exceptions for "deps" folder in "lsd" target */,
+			);
+			path = deps;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -116,6 +130,7 @@
 		692F153F2F89398D0037745D = {
 			isa = PBXGroup;
 			children = (
+				692F1D582F91DC900037745D /* deps */,
 				692F154F2F8939940037745D /* src */,
 				692F15F12F89F61E0037745D /* tests */,
 				692F16082F89F66C0037745D /* Frameworks */,
@@ -143,6 +158,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		692F1D592F91DC900037745D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -167,6 +189,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				692F1D582F91DC900037745D /* deps */,
 			);
 			name = lsd;
 			packageProductDependencies = (
@@ -227,6 +252,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 692F15492F89398D0037745D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 692F1D592F91DC900037745D /* Products */;
+					ProjectRef = 692F1D552F91DC900037745D /* dictzip.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				692F15472F89398D0037745D /* lsd */,

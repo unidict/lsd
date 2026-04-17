@@ -15,6 +15,10 @@ find_package(ZLIB REQUIRED)
 find_package(VorbisFile REQUIRED)
 find_package(Unistring REQUIRED)
 
+# dictzip (submodule)
+set(DICTZIP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+add_subdirectory(deps/dictzip)
+
 # ---------- Library ----------
 file(GLOB LSD_SOURCES src/*.c)
 
@@ -31,7 +35,6 @@ set(LSD_PRIVATE_HEADERS
     src/lsd_decoder.h
     src/lsd_huffman.h
     src/lsd_utils.h
-    src/dsl_dictzip.h
 )
 
 add_library(lsd ${LSD_SOURCES} ${LSD_PUBLIC_HEADERS} ${LSD_PRIVATE_HEADERS})
@@ -40,7 +43,7 @@ target_include_directories(lsd
             $<INSTALL_INTERFACE:include/lsd>
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
-target_link_libraries(lsd PUBLIC ZLIB::ZLIB VorbisFile::VorbisFile Unistring::Unistring)
+target_link_libraries(lsd PUBLIC ZLIB::ZLIB VorbisFile::VorbisFile Unistring::Unistring dictzip)
 
 # Platform-specific link libraries
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")

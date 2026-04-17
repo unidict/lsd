@@ -6,7 +6,7 @@
 //
 
 #include "dsl_reader.h"
-#include "dsl_dictzip.h"
+#include "dictzip.h"
 #include "lsd_platform.h"
 #include <stdlib.h>
 #include <string.h>
@@ -83,7 +83,7 @@ static int dsl_getc(dsl_reader *reader) {
             }
 
             memcpy(reader->read_buffer, data, bytes_read);
-            dictzip_free(data);
+            free(data);
 
             reader->buffer_pos = 0;
             reader->buffer_valid = bytes_read;
@@ -131,7 +131,7 @@ static int dsl_get_utf16_char(dsl_reader *reader) {
             }
 
             memcpy(reader->read_buffer, data, bytes_read);
-            dictzip_free(data);
+            free(data);
 
             reader->buffer_pos = 0;
             reader->buffer_valid = bytes_read;
@@ -440,7 +440,6 @@ dsl_reader *dsl_reader_open(const char *filename) {
         reader->dz = dictzip_open(filename);
         if (!reader->dz) {
             fprintf(stderr, "Failed to open dictzip file: %s\n", filename);
-            fprintf(stderr, "Error: %s\n", dictzip_get_error(NULL));
             free(reader);
             return NULL;
         }
@@ -491,7 +490,7 @@ dsl_reader *dsl_reader_open(const char *filename) {
         unsigned char *data = dictzip_read(reader->dz, 0, 4, &bytes_read);
         if (data && bytes_read >= 3) {
             memcpy(bom, data, bytes_read);
-            dictzip_free(data);
+            free(data);
 
             if (bytes_read >= 3 && bom[0] == 0xEF && bom[1] == 0xBB && bom[2] == 0xBF) {
                 reader->header.encoding = DSL_ENCODING_UTF8;

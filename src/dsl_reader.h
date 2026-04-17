@@ -13,8 +13,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-// Forward declaration (avoids exposing dsl_dictzip internal implementation and zlib dependency)
-typedef struct dsl_dictzip dsl_dictzip;
+// Forward declaration (avoids exposing dictzip internal implementation and zlib dependency)
+typedef struct dictzip dictzip;
 
 #ifdef __cplusplus
 extern "C" {
@@ -57,7 +57,7 @@ typedef struct dsl_article {
 // ============================================================
 typedef struct dsl_reader {
     FILE *file;              // File handle (for uncompressed files)
-    dsl_dictzip *dz;         // dictzip handle (for DSL.dz files)
+    dictzip *dz;              // dictzip handle (for DSL.dz files)
     const char *filename;    // File name
 
     dsl_header header;       // File header information
