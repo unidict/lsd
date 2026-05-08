@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![C](https://img.shields.io/badge/C-11-blue.svg)](https://en.wikipedia.org/wiki/C11_(C_standard))
-[![CI](https://github.com/kejinlu/lsd/actions/workflows/ci.yml/badge.svg)](https://github.com/kejinlu/lsd/actions/workflows/ci.yml)
+[![CI](https://github.com/unidict/lsd/actions/workflows/ci.yml/badge.svg)](https://github.com/unidict/lsd/actions/workflows/ci.yml)
 
 **lsd** — A C library for reading **ABBYY Lingvo** dictionary files (LSD, DSL, LSA), extracting entries, articles, annotations, embedded resources, and audio pronunciations.
 
@@ -55,7 +55,7 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 ### Build from Source
 
 ```bash
-git clone https://github.com/kejinlu/lsd.git
+git clone https://github.com/unidict/lsd.git
 cd lsd
 
 cmake -B build
