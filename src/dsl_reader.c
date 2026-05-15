@@ -569,8 +569,9 @@ dsl_reader *dsl_reader_open(const char *filename) {
         }
 
         // Parse comment line
-        char *key = strtok(line + 1, " \t\"");
-        char *value = strtok(NULL, "\"");
+        char *saveptr;
+        char *key = strtok_r(line + 1, " \t\"", &saveptr);
+        char *value = strtok_r(NULL, "\"", &saveptr);
 
         if (key && value) {
             if (strcmp(key, "NAME") == 0) {
